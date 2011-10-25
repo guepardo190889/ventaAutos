@@ -25,6 +25,9 @@ class VehiculoController {
             render(view: "create", model: [vehiculoInstance: vehiculoInstance])
             return
         }
+        else{
+            log.debug "Se guardo vehiculoInstance: ${vehiculoInstance}"
+        }
 
 		flash.message = message(code: 'default.created.message', args: [message(code: 'vehiculo.label', default: 'Vehiculo'), vehiculoInstance.id])
         redirect(action: "show", id: vehiculoInstance.id)

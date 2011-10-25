@@ -11,10 +11,31 @@ import javax.servlet.http.HttpServletResponse
 class VehiculoControllerTests {
 
 
+    List<Reparacion> crearReparaciones(Integer numReparaciones){
+        List<Reparacion> reparaciones = new ArrayList<Reparacion>()
+        for(int i = 1; i <= numReparaciones; i++){
+            def reparacion = new Reparacion(
+                descripcion : 'TEST',
+                costo : new BigDecimal("0${i.toString()}.00")
+            ).save()
+            assertNotNull reparacion
+            reparaciones.add(reparacion)
+        }
+        return reparaciones
+    }
+
     def populateValidParams(params) {
       assert params != null
       // TODO: Populate valid properties like...
       //params["name"] = 'someValidName'
+      params ["descripcion"] = "TEST"
+      params ["costo"] = new BigDecimal("0.00")
+      params ["costoVenta"] = new BigDecimal("0.00")
+      params ["fechaAlta "]= new Date()
+      params ["fechaVenta "]= new Date()
+      params ["vendido"] = false
+      //params ["reparaciones"] = crearReparaciones(5)
+      //println "params: ${controller.params}"
     }
 
     void testIndex() {
@@ -51,7 +72,9 @@ class VehiculoControllerTests {
 
         populateValidParams(params)
         controller.save()
+        //El Vehiculo se guarda, pero no se porque no se asigna el response
 
+        //println "response: ${response.getProperties()}"
         assert response.redirectedUrl == '/vehiculo/show/1'
         assert controller.flash.message != null
         assert Vehiculo.count() == 1

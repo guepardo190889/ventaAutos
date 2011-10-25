@@ -15,6 +15,7 @@ class Vehiculo {
         descripcion blank:false
         costo blank:false
         costoVenta blank:false
+        reparaciones blank:true
     }
 
     String toString(){
