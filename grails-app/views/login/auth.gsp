@@ -95,14 +95,35 @@
 
 		<form action='${postUrl}' method='POST' id='loginForm' class='cssform' autocomplete='off'>
 			<p>
-				<label for='username'><g:message code="springSecurity.login.username.label"/>:</label>
-				<input type='text' class='text_' name='j_username' id='username'/>
+				<label for='username'>
+                                  <g:message code="springSecurity.login.username.label"/>:
+                                  <span class="required-indicator">*</span>
+                                </label>
+				<input type='text' class='text_' name='j_username' id='username' required=""/>
 			</p>
 
 			<p>
-				<label for='password'><g:message code="springSecurity.login.password.label"/>:</label>
-				<input type='password' class='text_' name='j_password' id='password'/>
+				<label for='password'>
+                                  <g:message code="springSecurity.login.password.label"/>:
+                                  <span class="required-indicator">*</span>
+                                </label>
+				<input type='password' class='text_' name='j_password' id='password' required="" />
 			</p>
+<!--                    <div class="fieldcontain ${hasErrors(bean: usuario, field: 'username', 'error')} required">
+                        <label for="username">
+                            <g:message code="usuario.username.label" default="Username" />
+                            <span class="required-indicator">*</span>
+                        </label>
+                        <g:textField name="j_username" required="" value="${usuario?.username}"/>
+                    </div>
+
+                    <div class="fieldcontain ${hasErrors(bean: usuario, field: 'password', 'error')} required">
+                        <label for="password">
+                            <g:message code="usuario.password.label" default="Password" />
+                            <span class="required-indicator">*</span>
+                        </label>
+                        <g:passwordField name="j_password" required="" value="${usuario?.password}"/>
+                    </div>-->
 
 			<p id="remember_me_holder">
 				<input type='checkbox' class='chk' name='${rememberMeParameter}' id='remember_me' <g:if test='${hasCookie}'>checked='checked'</g:if>/>

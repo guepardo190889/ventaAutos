@@ -1,5 +1,9 @@
 <!doctype html>
 <html>
+  <div style="visibility: hidden">
+    <br />
+    <a href="http://apycom.com/">Apycom jQuery Menus</a><br />
+  </div>
 	<head>
 		<meta name="layout" content="main"/>
 		<title>Welcome to Grails</title>
