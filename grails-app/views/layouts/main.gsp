@@ -1,6 +1,5 @@
 <!doctype html>
 <div style="visibility:hidden">
-<a href="http://apycom.com/">Apycom jQuery Menus</a>
 </div>
 <!--[if lt IE 7 ]> <html lang="en" class="no-js ie6"> <![endif]-->
 <!--[if IE 7 ]>    <html lang="en" class="no-js ie7"> <![endif]-->
@@ -8,9 +7,9 @@
 <!--[if IE 9 ]>    <html lang="en" class="no-js ie9"> <![endif]-->
 <!--[if (gt IE 9)|!(IE)]><!--> <html lang="en" class="no-js"><!--<![endif]-->
 	<head>
-                <link type="text/css" href="menu.css" rel="stylesheet" />
+<!--                <link type="text/css" href="menu.css" rel="stylesheet" />
         	<script type="text/javascript" src="jquery.js"></script>
-                <script type="text/javascript" src="menu.js"></script>
+                <script type="text/javascript" src="menu.js"></script>-->
 
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -32,10 +31,12 @@
                     <p><a href="${createLink(controller:'logout')}"><g:message code="logout.header.message" /></a></p>
                   </sec:ifLoggedIn>
                 </div>
-<!--		<div id="grailsLogo" role="banner"><a href="http://grails.org"><img src="${resource(dir: 'images', file: 'grails_logo.png')}" alt="Grails"/></a></div>-->
+		<div id="grailsLogo" role="banner"><img src="${resource(dir: 'images', file: 'vehiculo_mini_logo.png')}" alt="Grails"/></a></div>
 
 		<g:layoutBody/>
-		<div class="footer" role="contentinfo"></div>
+		<div class="footer" role="contentinfo">
+                  <p>&copy; 2011 Universidad de Montemorelos A.C.</p>
+                </div>
 		<div id="spinner" class="spinner" style="display:none;"><g:message code="spinner.alt" default="Loading&hellip;"/></div>
                 <r:layoutResources/>
                 <g:javascript library="application"/>

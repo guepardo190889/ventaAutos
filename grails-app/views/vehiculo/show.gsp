@@ -23,6 +23,15 @@
 			</g:if>
 			<ol class="property-list vehiculo">
 			
+				<g:if test="${vehiculoInstance?.descripcion}">
+				<li class="fieldcontain">
+					<span id="descripcion-label" class="property-label"><g:message code="vehiculo.descripcion.label" default="Descripcion" /></span>
+					
+						<span class="property-value" aria-labelledby="descripcion-label"><g:fieldValue bean="${vehiculoInstance}" field="descripcion"/></span>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${vehiculoInstance?.costo}">
 				<li class="fieldcontain">
 					<span id="costo-label" class="property-label"><g:message code="vehiculo.costo.label" default="Costo" /></span>
@@ -41,6 +50,17 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${vehiculoInstance?.reparaciones}">
+				<li class="fieldcontain">
+					<span id="reparaciones-label" class="property-label"><g:message code="vehiculo.reparaciones.label" default="Reparaciones" /></span>
+					
+						<g:each in="${vehiculoInstance.reparaciones}" var="r">
+						<span class="property-value" aria-labelledby="reparaciones-label"><g:link controller="reparacion" action="show" id="${r.id}">${r?.encodeAsHTML()}</g:link></span>
+						</g:each>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${vehiculoInstance?.fechaVenta}">
 				<li class="fieldcontain">
 					<span id="fechaVenta-label" class="property-label"><g:message code="vehiculo.fechaVenta.label" default="Fecha Venta" /></span>
@@ -50,13 +70,11 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${vehiculoInstance?.reparaciones}">
+				<g:if test="${vehiculoInstance?.fechaAlta}">
 				<li class="fieldcontain">
-					<span id="reparaciones-label" class="property-label"><g:message code="vehiculo.reparaciones.label" default="Reparaciones" /></span>
+					<span id="fechaAlta-label" class="property-label"><g:message code="vehiculo.fechaAlta.label" default="Fecha Alta" /></span>
 					
-						<g:each in="${vehiculoInstance.reparaciones}" var="r">
-						<span class="property-value" aria-labelledby="reparaciones-label"><g:link controller="reparacion" action="show" id="${r.id}">${r?.encodeAsHTML()}</g:link></span>
-						</g:each>
+						<span class="property-value" aria-labelledby="fechaAlta-label"><g:formatDate date="${vehiculoInstance?.fechaAlta}" /></span>
 					
 				</li>
 				</g:if>

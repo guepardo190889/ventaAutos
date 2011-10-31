@@ -24,11 +24,15 @@
 				<thead>
 					<tr>
 					
+						<g:sortableColumn property="descripcion" title="${message(code: 'vehiculo.descripcion.label', default: 'Descripcion')}" />
+					
 						<g:sortableColumn property="costo" title="${message(code: 'vehiculo.costo.label', default: 'Costo')}" />
 					
 						<g:sortableColumn property="costoVenta" title="${message(code: 'vehiculo.costoVenta.label', default: 'Costo Venta')}" />
 					
 						<g:sortableColumn property="fechaVenta" title="${message(code: 'vehiculo.fechaVenta.label', default: 'Fecha Venta')}" />
+					
+						<g:sortableColumn property="fechaAlta" title="${message(code: 'vehiculo.fechaAlta.label', default: 'Fecha Alta')}" />
 					
 						<g:sortableColumn property="vendido" title="${message(code: 'vehiculo.vendido.label', default: 'Vendido')}" />
 					
@@ -38,11 +42,15 @@
 				<g:each in="${vehiculoInstanceList}" status="i" var="vehiculoInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${vehiculoInstance.id}">${fieldValue(bean: vehiculoInstance, field: "costo")}</g:link></td>
+						<td><g:link action="show" id="${vehiculoInstance.id}">${fieldValue(bean: vehiculoInstance, field: "descripcion")}</g:link></td>
+					
+						<td>${fieldValue(bean: vehiculoInstance, field: "costo")}</td>
 					
 						<td>${fieldValue(bean: vehiculoInstance, field: "costoVenta")}</td>
 					
 						<td><g:formatDate date="${vehiculoInstance.fechaVenta}" /></td>
+					
+						<td><g:formatDate date="${vehiculoInstance.fechaAlta}" /></td>
 					
 						<td><g:formatBoolean boolean="${vehiculoInstance.vendido}" /></td>
 					

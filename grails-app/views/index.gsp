@@ -3,72 +3,35 @@
 	<head>
 		<meta name="layout" content="main"/>
 		<title>Venta de Autos</title>
-                <!--<link type="text/css" href="menu.css" rel="stylesheet" />
-        	<script type="text/javascript" src="jquery.js"></script>
-                <script type="text/javascript" src="menu.js"></script>-->
 	</head>
 	<body>
+            <a href="#page-body" class="skip"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
+            <div id="page-body" role="main">
+		<div class="nav" role="navigation">
+			<ul>
+				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/>&nbsp;&gt;</a></li>
+				<li><g:link class="list" controller="vehiculo"><g:message code="vehiculo.list.label" /></g:link></li>
+<!--				<li><g:link class="list" controller="tipoCliente"><g:message code="tipoCliente.list.label" /></g:link></li>
+				<li><g:link class="list" controller="proveedor"><g:message code="proveedor.list.label" /></g:link></li>
+				<li><g:link class="list" controller="usuario"><g:message code="usuario.list.label" /></g:link></li>
+				<li><g:link class="list" controller="empresa"><g:message code="empresa.list.label" /></g:link></li>
+				<li><g:link class="list" controller="organizacion"><g:message code="organizacion.list.label" /></g:link></li>-->
+			</ul>
+		</div>
+                    <g:if test="${flash.message}">
+                        <div class="message" role="status">${flash.message}</div>
+                    </g:if>
 
-<!--MENU START-->
-        <div id="menu">
-		<ul class="menu">
-			<li>
-                          <a href="${resource(dir: '')}" class="parent"><span>Inicio</span></a>
-			</li>
-			<li>
-                          <a href="#"><span>Iglesias</span></a>
-				<div><ul>
-                                      <li><a href="iglesia/create"<span>Registrar Iglesia</span></a></li>
-                                      <li><a href="#"<span><g:link class="iglesia" controller="iglesia"><g:message code="Lista de Iglesias" /></g:link></span></a></li>
-                                  </ul></div>
-			</li>
-                        <li><a href="#"><span>Comunidad</span></a>
-				<div><ul>
-					<li><a href="persona/create"<span>Registrar Persona</span></a></li>
-                                        <li><a href="persona/buscarPersona.gsp"<span>Buscar Persona</span></a></li>
-                                        <li><a href="persona/list"><span>Lista de Personas</span></a></li>
-					<li><a href="#"><span>Reportes</span></a>
-                                        <div>
-                                          <ul>
-                                            <li><a href="persona/tipoSangre.gsp"><span>Tipo de Sangre</span></a>
-                                            <li><a href="persona/buscarEdad.gsp"><span>Edades</span></a>
-                                          </ul>
-                                        </div>
-                                        </li>
-				</ul></div>
-			</li>
-                        <li><a href="#"><span>Miembros</span></a>
-                            <div><ul>
-                                <li><a href="persona/buscarMiembro.gsp"<span>Buscar Miembro</span></a></li>
-                                <li><a href="#"><span>Reportes</span></a>
-                                <div>
-                                    <ul>
-                                        <li><a href="#"<span><g:link class="persona" controller="persona" action="buscarMiembrosActivos"><g:message code="Miembros Activos" /></g:link></span></a></li>
-                                        <li><a href="persona/reportes/buscarIngresos.gsp"<span>Buscar Ingresos</span></a></li>
-<!--                                        <li><a href="#"><span>Libro de Iglesia</span></a>-->
-                                    </ul>
-                                </div>
-                                </li>
-                            </ul></div>
-                        </li>
-                        <li><a href="#"><span>Administración</span></a>
-				<div><ul>
-					<li><a href=""<span><g:link class="usuario" controller="usuario"><g:message code="Usuarios" /></g:link></span></a></li>
-					
-				</ul></div>
-			</li>
-			<li><a href="ayuda.gsp"><span>Ayuda</span></a></li>
-		</ul>
-        </div>
-<!--MENU END-->
+<!--                <div class="content">
+                  <h1><g:message code="admin.label" default="Admin" /></h1>
+                </div>-->
 
-		<a href="#page-body" class="skip"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-		<div id="page-body" role="main">
-			<h1>Welcome to Grails</h1>
-			<p>Congratulations, you have successfully started your first Grails application! At the moment
-			   this is the default page, feel free to modify it to either redirect to a controller or display whatever
-			   content you may choose. Below is a list of controllers that are currently deployed in this application,
-			   click on each to execute its default action:</p>
+                
+<!--			<h1>Bienvenido!</h1>-->
+			<p>Felicidades. En este lugar, tu puedes registrar tu vehiculo para venderlo y tambien podras comprar otros vehiculos.
+                        </br>
+                        </br>
+                        Ve al menu de Vehiculos, para registrar el tuyo</p>
 		</div>
 	</body>
 </html>

@@ -1,7 +1,11 @@
 package ventasautos
 
+import grails.converters.JSON
+import grails.plugins.springsecurity.Secured
+import org.codehaus.groovy.grails.plugins.springsecurity.SpringSecurityUtils
 import org.springframework.dao.DataIntegrityViolationException
 
+@Secured(['ROLE_ADMINISTRADOR'])
 class VehiculoController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
