@@ -32,6 +32,24 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${vehiculoInstance?.modelo}">
+				<li class="fieldcontain">
+					<span id="modelo-label" class="property-label"><g:message code="vehiculo.modelo.label" default="Modelo" /></span>
+					
+						<span class="property-value" aria-labelledby="modelo-label"><g:fieldValue bean="${vehiculoInstance}" field="modelo"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${vehiculoInstance?.marca}">
+				<li class="fieldcontain">
+					<span id="marca-label" class="property-label"><g:message code="vehiculo.marca.label" default="Marca" /></span>
+					
+						<span class="property-value" aria-labelledby="marca-label"><g:fieldValue bean="${vehiculoInstance}" field="marca"/></span>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${vehiculoInstance?.costo}">
 				<li class="fieldcontain">
 					<span id="costo-label" class="property-label"><g:message code="vehiculo.costo.label" default="Costo" /></span>

@@ -1,11 +1,13 @@
 package ventasautos
 
-import org.apache.commons.collections.list.LazyList;
-import org.apache.commons.collections.FactoryUtils;
+//import org.apache.commons.collections.list.LazyList;
+//import org.apache.commons.collections.FactoryUtils;
 
 class Vehiculo {
 
     String descripcion
+    String modelo
+    String marca
     BigDecimal costo = new BigDecimal("0.00")
     BigDecimal costoVenta = new BigDecimal("0.00")
     Date fechaAlta = new Date()
@@ -17,6 +19,8 @@ class Vehiculo {
     
     static constraints = {
         descripcion blank:false
+        modelo blank:false
+        marca blank:false
         costo min:1.00, max:999999.00, scale:2, blank:false
         costoVenta min:1.00, max:999999.00, scale:2, blank:false
         reparaciones nullable:true
@@ -27,9 +31,9 @@ class Vehiculo {
         reparaciones cascade: "all, delete-orphan"
     }
 
-    def getExpandableReparacionesList() {
-        return LazyList.decorate(reparaciones,FactoryUtils.instantiateFactory(Reparacion.class))
-    }
+//    def getExpandableReparacionesList() {
+//        return LazyList.decorate(reparaciones,FactoryUtils.instantiateFactory(Reparacion.class))
+//    }
 
     String toString(){
         return "costo: ${costo.toString()}, fechaAlta: ${fechaAlta}, vendido: ${vendido}"

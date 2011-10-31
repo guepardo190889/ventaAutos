@@ -1,8 +1,6 @@
 <%@ page import="ventasautos.Vehiculo" %>
 
-<!--<g:hiddenField name="fechaAlta" />
-<g:hiddenField name="fechaVenta" />
-<g:hiddenField name="vendido" />-->
+
 
 <div class="fieldcontain ${hasErrors(bean: vehiculoInstance, field: 'descripcion', 'error')} required">
 	<label for="descripcion">
@@ -10,6 +8,22 @@
 		<span class="required-indicator">*</span>
 	</label>
 	<g:textField name="descripcion" required="" value="${vehiculoInstance?.descripcion}"/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: vehiculoInstance, field: 'modelo', 'error')} required">
+	<label for="modelo">
+		<g:message code="vehiculo.modelo.label" default="Modelo" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:textField name="modelo" required="" value="${vehiculoInstance?.modelo}"/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: vehiculoInstance, field: 'marca', 'error')} required">
+	<label for="marca">
+		<g:message code="vehiculo.marca.label" default="Marca" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:textField name="marca" required="" value="${vehiculoInstance?.marca}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: vehiculoInstance, field: 'costo', 'error')} required">
@@ -27,3 +41,45 @@
 	</label>
 	<g:field type="number" name="costoVenta" min="1.00" max="999999.00" required="" value="${fieldValue(bean: vehiculoInstance, field: 'costoVenta')}"/>
 </div>
+
+<div class="fieldcontain ${hasErrors(bean: vehiculoInstance, field: 'reparaciones', 'error')} ">
+	<label for="reparaciones">
+		<g:message code="vehiculo.reparaciones.label" default="Reparaciones" />
+		
+	</label>
+	
+<ul class="one-to-many">
+<g:each in="${vehiculoInstance?.reparaciones?}" var="r">
+    <li><g:link controller="reparacion" action="show" id="${r.id}">${r?.encodeAsHTML()}</g:link></li>
+</g:each>
+<li class="add">
+<g:link controller="reparacion" action="create" params="['vehiculo.id': vehiculoInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'reparacion.label', default: 'Reparacion')])}</g:link>
+</li>
+</ul>
+
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: vehiculoInstance, field: 'fechaVenta', 'error')} ">
+	<label for="fechaVenta">
+		<g:message code="vehiculo.fechaVenta.label" default="Fecha Venta" />
+		
+	</label>
+	<g:datePicker name="fechaVenta" precision="day"  value="${vehiculoInstance?.fechaVenta}" default="none" noSelection="['': '']" />
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: vehiculoInstance, field: 'fechaAlta', 'error')} required">
+	<label for="fechaAlta">
+		<g:message code="vehiculo.fechaAlta.label" default="Fecha Alta" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:datePicker name="fechaAlta" precision="day"  value="${vehiculoInstance?.fechaAlta}"  />
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: vehiculoInstance, field: 'vendido', 'error')} ">
+	<label for="vendido">
+		<g:message code="vehiculo.vendido.label" default="Vendido" />
+		
+	</label>
+	<g:checkBox name="vendido" value="${vehiculoInstance?.vendido}" />
+</div>
+

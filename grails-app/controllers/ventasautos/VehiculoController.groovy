@@ -5,7 +5,7 @@ import grails.plugins.springsecurity.Secured
 import org.codehaus.groovy.grails.plugins.springsecurity.SpringSecurityUtils
 import org.springframework.dao.DataIntegrityViolationException
 
-@Secured(['ROLE_ADMINISTRADOR'])
+//@Secured(['ROLE_ADMINISTRADOR'])
 class VehiculoController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
@@ -19,10 +19,12 @@ class VehiculoController {
         [vehiculoInstanceList: Vehiculo.list(params), vehiculoInstanceTotal: Vehiculo.count()]
     }
 
+    @Secured(['ROLE_ADMINISTRADOR','ROLE_VENDEDOR'])
     def create() {
         [vehiculoInstance: new Vehiculo(params)]
     }
 
+    @Secured(['ROLE_ADMINISTRADOR','ROLE_VENDEDOR'])
     def save() {
         def vehiculoInstance = new Vehiculo(params)
         if (!vehiculoInstance.save(flush: true)) {
@@ -48,6 +50,7 @@ class VehiculoController {
         [vehiculoInstance: vehiculoInstance]
     }
 
+    @Secured(['ROLE_ADMINISTRADOR','ROLE_VENDEDOR'])
     def edit() {
         def vehiculoInstance = Vehiculo.get(params.id)
         if (!vehiculoInstance) {
@@ -59,6 +62,7 @@ class VehiculoController {
         [vehiculoInstance: vehiculoInstance]
     }
 
+    @Secured(['ROLE_ADMINISTRADOR','ROLE_VENDEDOR'])
     def update() {
         def vehiculoInstance = Vehiculo.get(params.id)
         if (!vehiculoInstance) {
@@ -89,6 +93,7 @@ class VehiculoController {
         redirect(action: "show", id: vehiculoInstance.id)
     }
 
+    @Secured(['ROLE_ADMINISTRADOR','ROLE_VENDEDOR'])
     def delete() {
         def vehiculoInstance = Vehiculo.get(params.id)
         if (!vehiculoInstance) {
@@ -106,5 +111,19 @@ class VehiculoController {
 			flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'vehiculo.label', default: 'Vehiculo'), params.id])
             redirect(action: "show", id: params.id)
         }
+    }
+
+//    def addReparacion(){
+//        log.debug "addReparacion"
+//        log.debug "***********************************************************************************************************************"
+//        log.debug "params: ${params}"
+//        render(action: "create", model: [vehiculoInstance: vehiculoInstance])//aqui debe mandarme al create de Reparaciones
+//    }
+
+    def vehiculosDisponibles() {
+        def vehiculosList = Vehiculo.findByVendido(false)
+        params.max = Math.min(params.max ? params.int('max') : 10, 100)
+        //render(view: "edit", model: [vehiculoInstance: vehiculoInstance])
+        [vehiculoInstanceList: Vehiculo.list(params), vehiculoInstanceTotal: Vehiculo.count()]
     }
 }

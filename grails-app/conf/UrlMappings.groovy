@@ -11,7 +11,8 @@ class UrlMappings {
 			}
 		}
 
-            "/"(controller:"inicio",view:"/index")
+//            "/"(controller:"inicio",view:"/index")
+                "/"(controller:"vehiculo",action:"vehiculosDisponibles")
             "500"(view:'/error')
 	}
 }
