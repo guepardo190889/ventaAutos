@@ -12,7 +12,9 @@
 		<div class="nav" role="navigation">
 			<ul>
 				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
+                                <g:if >
+                                <li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
+                                </g:if>
 			</ul>
 		</div>
 <!--		<div id="list-vehiculo" class="content scaffold-list" role="main">-->
@@ -29,7 +31,6 @@
 						<g:sortableColumn property="marca" title="${message(code: 'vehiculo.marca.label', default: 'Marca')}" />
 						<g:sortableColumn property="costo" title="${message(code: 'vehiculo.costo.label', default: 'Costo')}" />
 						<g:sortableColumn property="costoVenta" title="${message(code: 'vehiculo.costoVenta.label', default: 'Costo Venta')}" />
-						<g:sortableColumn property="fechaVenta" title="${message(code: 'vehiculo.fechaVenta.label', default: 'Fecha Venta')}" />
 					</tr>
 				</thead>
 				<tbody>
@@ -40,7 +41,6 @@
 						<td>${fieldValue(bean: vehiculoInstance, field: "marca")}</td>
 						<td>${fieldValue(bean: vehiculoInstance, field: "costo")}</td>
 						<td>${fieldValue(bean: vehiculoInstance, field: "costoVenta")}</td>
-						<td><g:formatDate date="${vehiculoInstance.fechaVenta}" /></td>
 					</tr>
 				</g:each>
 				</tbody>
