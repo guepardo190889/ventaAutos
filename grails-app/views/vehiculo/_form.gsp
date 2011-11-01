@@ -1,15 +1,6 @@
 <%@ page import="ventasautos.Vehiculo" %>
 
 
-
-<div class="fieldcontain ${hasErrors(bean: vehiculoInstance, field: 'descripcion', 'error')} required">
-	<label for="descripcion">
-		<g:message code="vehiculo.descripcion.label" default="Descripcion" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:textField name="descripcion" required="" value="${vehiculoInstance?.descripcion}"/>
-</div>
-
 <div class="fieldcontain ${hasErrors(bean: vehiculoInstance, field: 'modelo', 'error')} required">
 	<label for="modelo">
 		<g:message code="vehiculo.modelo.label" default="Modelo" />
@@ -42,6 +33,14 @@
 	<g:field type="number" name="costoVenta" min="1.00" max="999999.00" required="" value="${fieldValue(bean: vehiculoInstance, field: 'costoVenta')}"/>
 </div>
 
+<div class="fieldcontain ${hasErrors(bean: vehiculoInstance, field: 'descripcion', 'error')} required">
+	<label for="descripcion">
+		<g:message code="vehiculo.descripcion.label" default="Descripcion" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:textArea name="descripcion" required="" value="${vehiculoInstance?.descripcion}"/>
+</div>
+
 <div class="fieldcontain ${hasErrors(bean: vehiculoInstance, field: 'reparaciones', 'error')} ">
 	<label for="reparaciones">
 		<g:message code="vehiculo.reparaciones.label" default="Reparaciones" />
@@ -58,28 +57,3 @@
 </ul>
 
 </div>
-
-<div class="fieldcontain ${hasErrors(bean: vehiculoInstance, field: 'fechaVenta', 'error')} ">
-	<label for="fechaVenta">
-		<g:message code="vehiculo.fechaVenta.label" default="Fecha Venta" />
-		
-	</label>
-	<g:datePicker name="fechaVenta" precision="day"  value="${vehiculoInstance?.fechaVenta}" default="none" noSelection="['': '']" />
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: vehiculoInstance, field: 'fechaAlta', 'error')} required">
-	<label for="fechaAlta">
-		<g:message code="vehiculo.fechaAlta.label" default="Fecha Alta" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:datePicker name="fechaAlta" precision="day"  value="${vehiculoInstance?.fechaAlta}"  />
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: vehiculoInstance, field: 'vendido', 'error')} ">
-	<label for="vendido">
-		<g:message code="vehiculo.vendido.label" default="Vendido" />
-		
-	</label>
-	<g:checkBox name="vendido" value="${vehiculoInstance?.vendido}" />
-</div>
-

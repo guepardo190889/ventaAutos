@@ -10,16 +10,17 @@
 		<div class="nav" role="navigation">
 			<ul>
 				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/>&nbsp;&gt;</a></li>
-				<li><g:link class="list" controller="vehiculo"><g:message code="vehiculo.list.label" /></g:link></li>
+				<li><g:link class="list" controller="vehiculo" action="vehiculosDisponibles"><g:message code="vehiculo.list.disponibles.label" /></g:link></li>
+                                <li><g:link class="list" controller="vehiculo" action="vehiculosVendidos"><g:message code="vehiculo.list.vendidos.label" /></g:link></li>
 			</ul>
 		</div>
                     <g:if test="${flash.message}">
                         <div class="message" role="status">${flash.message}</div>
                     </g:if>
-			<p>Felicidades. En este lugar, tu puedes registrar tu vehiculo para venderlo y tambien podras comprar otros vehiculos.
+			<p>En este lugar, tu puedes registrar tu vehiculo para venderlo y tambien podras comprar otros vehiculos.
                         </br>
                         </br>
-                        Ve al menu de Vehiculos, para registrar el tuyo</p>
+                        Navega por los menus para conocer las diferentes opciones</p>
 		</div>
 	</body>
 </html>

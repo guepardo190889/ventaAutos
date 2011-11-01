@@ -74,6 +74,16 @@ class BootStrap {
             vendido : false
         ).save(flush:true)
 
+        def vehiculo3 = new Vehiculo(
+            descripcion : 'Bocho',
+            modelo : '1998',
+            marca : 'Volkswagen',
+            costo : new BigDecimal("35000.00"),
+            costoVenta : new BigDecimal("10000.00"),
+            fechaAlta : new Date(),
+            vendido : true
+        ).save(flush:true)
+
     }
     def destroy = {
     }

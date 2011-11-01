@@ -121,9 +121,20 @@ class VehiculoController {
 //    }
 
     def vehiculosDisponibles() {
-        def vehiculosList = Vehiculo.findByVendido(false)
-        params.max = Math.min(params.max ? params.int('max') : 10, 100)
-        //render(view: "edit", model: [vehiculoInstance: vehiculoInstance])
-        [vehiculoInstanceList: Vehiculo.list(params), vehiculoInstanceTotal: Vehiculo.count()]
+        def vehiculosList = Vehiculo.findAllByVendido(new Boolean(false))
+        log.debug "*************************************************************************************************************************"
+        log.debug "vehiculosDisponibles: ${vehiculosList.size()}"
+        //redirect (action: "list", model:[vehiculoInstanceList: vehiculosList, vehiculoInstanceTotal: vehiculosList.size()])
+        [vehiculoInstanceList: vehiculosList, vehiculoInstanceTotal: vehiculosList.size()]
+//        [vehiculoInstanceList: Vehiculo.list(params), vehiculoInstanceTotal: Vehiculo.count()]
+    }
+
+    def vehiculosVendidos() {
+        log.debug "*************************************************************************************************************************"
+        def vehiculosList = Vehiculo.findAllByVendido(new Boolean(true))
+        log.debug "vehiculosVendidos: ${vehiculosList.size()}"
+//        redirect (action: "list", model:[vehiculoInstanceList: vehiculosList, vehiculoInstanceTotal: vehiculosList.size()])
+//        render(view:"list",model:[vehiculoInstanceList: vehiculosList, vehiculoInstanceTotal: vehiculosList.size()])
+        [vehiculoInstanceList: vehiculosList, vehiculoInstanceTotal: vehiculosList.size()]
     }
 }

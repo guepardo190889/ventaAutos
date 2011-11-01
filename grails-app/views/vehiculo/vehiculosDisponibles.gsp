@@ -12,12 +12,12 @@
 		<div class="nav" role="navigation">
 			<ul>
 				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-                                <g:if >
-                                <li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
-                                </g:if>
+                                <sec:ifAnyGranted roles="ROLE_ADMINISTRADOR,ROLE_VENDEDOR">
+                                  <li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
+                                </sec:ifAnyGranted>
 			</ul>
 		</div>
-<!--		<div id="list-vehiculo" class="content scaffold-list" role="main">-->
+		<div id="list-vehiculo" class="content scaffold-list" role="main">
 			<h1><g:message code="default.list.label" args="[entityName]" /></h1>
 			<g:if test="${flash.message}">
 			<div class="message" role="status">${flash.message}</div>

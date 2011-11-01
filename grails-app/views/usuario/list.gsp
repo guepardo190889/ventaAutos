@@ -12,7 +12,9 @@
 		<div class="nav" role="navigation">
 			<ul>
 				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
+				<sec:ifAllGranted roles="ROLE_ADMINISTRADOR">
+                                    <li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
+                                </sec:ifAllGranted>
 			</ul>
 		</div>
 		<div id="list-usuario" class="content scaffold-list" role="main">
@@ -26,16 +28,16 @@
 					
 						<g:sortableColumn property="username" title="${message(code: 'usuario.username.label', default: 'Username')}" />
 					
-						<g:sortableColumn property="password" title="${message(code: 'usuario.password.label', default: 'Password')}" />
+						<g:sortableColumn property="apellidoMaterno" title="${message(code: 'usuario.apellidoMaterno.label', default: 'Apellido Materno')}" />
 					
-						<g:sortableColumn property="accountExpired" title="${message(code: 'usuario.accountExpired.label', default: 'Account Expired')}" />
-					
+						<g:sortableColumn property="apellidoPaterno" title="${message(code: 'usuario.apellidoPaterno.label', default: 'Apellido Paterno')}" />
+
+                                                <g:sortableColumn property="enable" title="${message(code: 'usuario.enabled.label', default: 'Habilitado')}" />
+
+                                                <g:sortableColumn property="accountExpired" title="${message(code: 'usuario.accountExpired.label', default: 'Account Expired')}" />
+
 						<g:sortableColumn property="accountLocked" title="${message(code: 'usuario.accountLocked.label', default: 'Account Locked')}" />
-					
-						<g:sortableColumn property="enabled" title="${message(code: 'usuario.enabled.label', default: 'Enabled')}" />
-					
-						<g:sortableColumn property="passwordExpired" title="${message(code: 'usuario.passwordExpired.label', default: 'Password Expired')}" />
-					
+
 					</tr>
 				</thead>
 				<tbody>
@@ -44,15 +46,15 @@
 					
 						<td><g:link action="show" id="${usuarioInstance.id}">${fieldValue(bean: usuarioInstance, field: "username")}</g:link></td>
 					
-						<td>${fieldValue(bean: usuarioInstance, field: "password")}</td>
+						<td>${fieldValue(bean: usuarioInstance, field: "apellidoMaterno")}</td>
 					
-						<td><g:formatBoolean boolean="${usuarioInstance.accountExpired}" /></td>
-					
+						<td>${fieldValue(bean: usuarioInstance, field: "apellidoPaterno")}</td>
+
+                                                <td><g:formatBoolean boolean="${usuarioInstance.enabled}" /></td>
+
+                                                <td><g:formatBoolean boolean="${usuarioInstance.accountExpired}" /></td>
+
 						<td><g:formatBoolean boolean="${usuarioInstance.accountLocked}" /></td>
-					
-						<td><g:formatBoolean boolean="${usuarioInstance.enabled}" /></td>
-					
-						<td><g:formatBoolean boolean="${usuarioInstance.passwordExpired}" /></td>
 					
 					</tr>
 				</g:each>

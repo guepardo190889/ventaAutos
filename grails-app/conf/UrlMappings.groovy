@@ -12,7 +12,7 @@ class UrlMappings {
 		}
 
 //            "/"(controller:"inicio",view:"/index")
-                "/"(controller:"vehiculo",action:"vehiculosDisponibles")
+                "/"(controller:"inicio",action:"indexGeneral")
             "500"(view:'/error')
 	}
 }

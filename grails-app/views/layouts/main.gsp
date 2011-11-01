@@ -25,13 +25,25 @@
                 
 	</head>
 	<body>
-            	<div class="encabezado">
-                  <sec:ifLoggedIn>
-                    <p><a href="${createLink(controller:'usuario',action:'perfil')}"><g:message code="welcome.header.message" /> <sec:username /></a></p>
-                    <p><a href="${createLink(controller:'logout')}"><g:message code="logout.header.message" /></a></p>
-                  </sec:ifLoggedIn>
+
+		<div id="grailsLogo" role="banner"><img src="${resource(dir: 'images', file: 'vehiculo_mini_logo.png')}" alt="Grails"/></a>
+
+                  <div class="encabezado" align="left">
+                    <sec:ifLoggedIn>
+                      <p><a href="${createLink(controller:'usuario',action:'perfil')}"><g:message code="welcome.header.message" /> <sec:username /></a></p>
+                      <p><a href="${createLink(controller:'logout')}"><g:message code="logout.header.message" /></a></p>
+                    </sec:ifLoggedIn>
+                  </div>
+
+                  <div class="encabezado" align="right">
+                      <sec:ifNotLoggedIn>
+                          <p><a href="${createLink(controller:'usuario',action:'create')}"><g:message code="default.registraUsuario" /> </a></p>
+                          <p><a href="${createLink(controller:'login',action:'auth')}"><g:message code="default.login" /> </a></p>
+                      </sec:ifNotLoggedIn>
+                        
+                  </div>
+
                 </div>
-		<div id="grailsLogo" role="banner"><img src="${resource(dir: 'images', file: 'vehiculo_mini_logo.png')}" alt="Grails"/></a></div>
 
 		<g:layoutBody/>
 		<div class="footer" role="contentinfo">

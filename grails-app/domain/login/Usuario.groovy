@@ -11,7 +11,7 @@ class Usuario {
         String apellidoMaterno
         String direccion
         String telefono
-	boolean enabled
+	boolean enabled = true
 	boolean accountExpired
 	boolean accountLocked
 	boolean passwordExpired
