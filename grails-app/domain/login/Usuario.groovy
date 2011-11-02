@@ -1,4 +1,5 @@
 package login
+import ventasautos.Vehiculo
 
 class Usuario {
 
@@ -15,10 +16,14 @@ class Usuario {
 	boolean accountExpired
 	boolean accountLocked
 	boolean passwordExpired
+        List<Vehiculo> vehiculos
+
+        static hasMany = [vehiculos : Vehiculo]
 
 	static constraints = {
-		username blank: false, unique: true
-		password blank: false
+            vehiculos nullable:true
+            username blank: false, unique: true
+            password blank: false
 	}
 
 	static mapping = {

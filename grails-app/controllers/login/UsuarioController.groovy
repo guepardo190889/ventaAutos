@@ -25,9 +25,18 @@ class UsuarioController {
             render(view: "create", model: [usuarioInstance: usuarioInstance])
             return
         }
+        //Agregando rol vendedor al usuario
+        def rolVendedor = login.Rol.findByAuthority('ROLE_VENDEDOR')
+        if (!usuarioInstance.authorities.contains(rolVendedor)){
+            log.debug "Poniendole ROLE_VENDEDOR al usuario: ${usuarioInstance}"
+            UsuarioRol.create(usuarioInstance, rolVendedor)
+        }
 
-		flash.message = message(code: 'default.created.message', args: [message(code: 'usuario.label', default: 'Usuario'), usuarioInstance.id])
-        redirect(action: "show", id: usuarioInstance.id)
+        log.debug "Debe redirigrme al login"
+            redirect(controller:"login",action:"auth")
+
+//		flash.message = message(code: 'default.created.message', args: [message(code: 'usuario.label', default: 'Usuario'), usuarioInstance.id])
+//        redirect(action: "show", id: usuarioInstance.id)
     }
 
     def show() {
